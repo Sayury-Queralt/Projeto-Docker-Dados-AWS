@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: app-nginx-image:latest
+    image: sayuryqueralt/app-nginx-image:latest
     container_name: app-ngnix
     ports:
       - "80:80"
