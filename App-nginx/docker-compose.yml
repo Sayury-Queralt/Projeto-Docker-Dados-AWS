@@ -11,6 +11,6 @@ services:
       - "80:80"
     restart: always
     volumes:
-      - /home/ec2-user/App-Projeto:/usr/share/nginx/html
+      - /home/ec2-user/App-nginx:/usr/share/nginx/html
     command: /bin/bash -c "/usr/share/nginx/html/Coleta.sh & nginx -g 'daemon off;'"
 
