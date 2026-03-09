@@ -1,0 +1,77 @@
+    <h1>Projeto Sayury - Aplicação utilizando Docker em EC2</h1>
+
+    <h2>Informações do Servidor EC2</h2>
+
+
+
+    <div class="container">
+
+        <div class="card">
+
+            <span class="label">ID da Instância:</span>
+
+            <span id="instance-id" class="value">Carregando...</span>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <span class="label">Hora da Coleta:</span>
+
+            <span id="hora-coleta" class="value">Carregando...</span>
+
+        </div>
+
+    </div>
+
+
+
+    <footer>
+
+        Projeto 1s2026
+
+    </footer>
+
+
+
+    <script>
+
+        function buscarDados(arquivo, id) {
+
+            fetch(arquivo)
+
+                .then(r => r.text())
+
+                .then(t => document.getElementById(id).innerText = t)
+
+                .catch(() => document.getElementById(id).innerText = "Aguardando script...");
+
+        }
+
+
+
+        // Chamada inicial
+
+        buscarDados('id_maquina.txt', 'instance-id');
+
+        buscarDados('hora.txt', 'hora-coleta');
+
+
+
+        // Atualiza a cada 60 segundos para bater com o Cron
+
+        setInterval(() => {
+
+            buscarDados('id_maquina.txt', 'instance-id');
+
+            buscarDados('hora.txt', 'hora-coleta');
+
+        }, 60000);
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  app-nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: app-nginx-image:latest
+    container_name: app-ngnix
+    ports:
+      - "80:80"
+    restart: always
+    volumes:
+      - /home/ec2-user/App-Projeto:/usr/share/nginx/html
+    command: /bin/bash -c "/usr/share/nginx/html/Coleta.sh & nginx -g 'daemon off;'"
+
