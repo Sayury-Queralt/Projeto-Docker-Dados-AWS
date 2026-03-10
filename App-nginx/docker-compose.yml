@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  app-nginx:
+    image: sayuryqueralt/app-nginx-image:latest
+    container_name: app-ngnix
+    ports:
+      - "80:80"
+    restart: always
+    volumes:
+      # O ponto (.) diz: use a pasta onde este arquivo yml está
+      - .:/usr/share/nginx/html
+    command: /bin/bash -c "chmod +x /usr/share/nginx/html/Coleta.sh && /usr/share/nginx/html/Coleta.sh & nginx -g 'daemon off;'"
+
